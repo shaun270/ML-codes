@@ -25,7 +25,7 @@ def gradient_descent(n, X, W, b, y_real, a):
     
     return w_fin, b_fin
 
-y_pred = 
+
     
 
 
