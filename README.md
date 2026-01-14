@@ -1,0 +1,1 @@
+### This repository is going to contain almost all ML codes written from scratch using just numpy. It will have supervised, unsupervised and MLPs. I might try including attention as well, but lets see ;)
