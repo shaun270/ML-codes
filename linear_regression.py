@@ -1,32 +1,37 @@
-from sklearn.datasets import load_boston
 import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
 
-n = 10
-a = 0.0001
-W = np.zeros(y-est)
+class LinearRegression:
+    def __init__(self, learning_rate):
+        self.W = None
+        self.b = None
+        self.learning_rate = learning_rate
 
-def cost_function(y_est, y_real):
-    return y_est - y_real
+    def fit(self, X, y, epochs):
+        n = X.shape[1]
+        n_samples = X.shape[0]
+        print(n)
+        y = y.reshape(-1,1)
+        self.W = np.zeros((n, 1))
+        self.b = 0.0
 
-def prediction(X, W, b):
-    return X@W + b
+        for _ in range(epochs):
+            y_hat = X@self.W + self.b
 
-def gradient_descent(n, X, W, b, y_real, a):
-    for i in range(n):
-        y_est = prediction(X, W, b)
-        diff = cost_function(prediction(X, W, b),  y_real)
-        dw = -2/n * np.sum(X@diff)
-        db = -2/n * np.sum(diff)
+            dW = (2/n_samples) * (X.T @ (y_hat - y))
+            db = (2/n_samples) * np.sum(y_hat - y)
 
-        w = w - a * dw
-        b = b - a * db
+            self.W -= self.learning_rate*dW
+            self.b -= self.learning_rate*db
     
-    return w_fin, b_fin
+    def   predict(self, X):
+        return X@self.W + self.b
 
+np.random.seed(0)
+X = np.random.randn(100, 1)
+y = 3 * X + 2 + np.random.randn(100, 1) * 0.5
 
-    
+model = LinearRegression(learning_rate=0.01)
+model.fit(X, y, epochs=2000)
 
-
+print(model.W, model.b)
 
