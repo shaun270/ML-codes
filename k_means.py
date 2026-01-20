@@ -1,7 +1,6 @@
 import numpy as np
 
 def k_means_clustering(points: list[tuple[float, float]], k: int, initial_centroids: list[tuple[float, float]], max_iterations: int) -> list[tuple[float, float]]:
-	# step 1 - assign random points to a dataset
     cluster_points = np.array(initial_centroids)
     points = np.array(points)
     for j in range(max_iterations):
